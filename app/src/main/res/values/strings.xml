@@ -3,4 +3,6 @@
     <string name="sort">Sort</string>
     <string name="popular_movies">Popular Movies</string>
     <string name="top_rated_movies">Top Rated Movies</string>
+    <string name="default_image">Default Image</string>
+    <string name="title_of_poster">Title of Poster</string>
 </resources>

@@ -1,11 +1,7 @@
 package com.example.android.popularmovies.config;
 
 
-import android.net.Uri;
-
 import com.example.android.popularmovies.BuildConfig;
-
-import java.net.URL;
 
 public class TheMovieDbConfig {
 
@@ -15,8 +11,6 @@ public class TheMovieDbConfig {
     private static final String BASE_URL_MOVIES = "https://api.themoviedb.org";
     private static final String BASE_URL_IMAGES = "https://image.tmdb.org/t/p/";
     private static final String LANGUAGE = "en-US";
-    private static final String CATEGORY_TOP_RATED = "top_rated";
-    private static final String CATEGORY_POPULAR = "popular";
 
     public static String getMovieDbApiKey() {
         return THE_MOVIE_DATABASE_API_KEY;
@@ -30,10 +24,8 @@ public class TheMovieDbConfig {
         return LANGUAGE;
     }
 
-   /* public static URL getImage(String filePath) {
-        Uri.Builder builder = new Uri.Builder();
-        Uri uri = builder.scheme("https").authority("image.tmdb.org")
-                .path("/t/p/").path(filePath).build();
-        URL url = uri.toString();
-    }*/
+   public static String getImage(String poster_path) {
+        String url = BASE_URL_IMAGES + "w185" + poster_path;
+        return url;
+    }
 }
