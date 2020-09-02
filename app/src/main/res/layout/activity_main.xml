@@ -6,7 +6,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    tools:ignore="MergeRootFrame">
 
     <ProgressBar
         android:id="@+id/progressBarMain"
@@ -23,7 +24,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movie_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1" />
 
         <ImageView
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:padding="8dp"
+            android:contentDescription="@string/movie_poster"
             app:srcCompat="@drawable/the_movie_db_logo" />
 
     </LinearLayout>

@@ -1,6 +1,9 @@
 package com.example.android.popularmovies.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +19,7 @@ import com.example.android.popularmovies.adapter.MoviesAdapter;
 import com.example.android.popularmovies.api.TheMovieDbService;
 import com.example.android.popularmovies.config.RetrofitConfig;
 import com.example.android.popularmovies.config.TheMovieDbConfig;
+import com.example.android.popularmovies.listener.RecyclerItemClickListener;
 import com.example.android.popularmovies.model.MovieModel;
 
 import java.util.List;
@@ -25,14 +29,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+/** For the App to work you need to replace BuildConfig.ApiKey with your own TheMovieDB API key in TheMovieDbConfig class */
+
+public class MainActivity extends AppCompatActivity implements RecyclerItemClickListener {
 
     private RecyclerView recyclerMovies;
     private List<MovieModel.ResultsBean> listOfMovies;
     private ProgressBar progressBarMain;
     private static final String CATEGORY_TOP_RATED = "top_rated";
     private static final String CATEGORY_POPULAR = "popular";
+    public static final String TAG = "movie_details";
     private MoviesAdapter adapter;
+    private Parcelable recyclerViewState;
+    private GridLayoutManager gridLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configureRecyclerView() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerMovies.setLayoutManager(gridLayoutManager);
         recyclerMovies.setHasFixedSize(true);
 
@@ -84,9 +93,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MovieModel> call, Response<MovieModel> response) {
                 MovieModel result = response.body();
+                assert result != null;
                 listOfMovies = result.getResults();
 
-                adapter = new MoviesAdapter(listOfMovies, MainActivity.this);
+                adapter = new MoviesAdapter(listOfMovies, MainActivity.this, MainActivity.this);
                 recyclerMovies.setAdapter(adapter);
 
                 showRecyclerView();
@@ -107,5 +117,25 @@ public class MainActivity extends AppCompatActivity {
     private void showProgressBar() {
         progressBarMain.setVisibility(View.VISIBLE);
         recyclerMovies.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onClick(int clickIndex) {
+        MovieModel.ResultsBean movie = listOfMovies.get(clickIndex);
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(TAG, movie);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        recyclerViewState = gridLayoutManager.onSaveInstanceState();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        gridLayoutManager.onRestoreInstanceState(recyclerViewState);
     }
 }

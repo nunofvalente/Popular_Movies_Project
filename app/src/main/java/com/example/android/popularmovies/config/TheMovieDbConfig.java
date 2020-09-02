@@ -25,7 +25,6 @@ public class TheMovieDbConfig {
     }
 
    public static String getImage(String poster_path) {
-        String url = BASE_URL_IMAGES + "w185" + poster_path;
-        return url;
+       return BASE_URL_IMAGES + "w185" + poster_path;
     }
 }

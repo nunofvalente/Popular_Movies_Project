@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Popular Movies</string>
-    <string name="sort">Sort</string>
     <string name="popular_movies">Popular Movies</string>
     <string name="top_rated_movies">Top Rated Movies</string>
-    <string name="default_image">Default Image</string>
     <string name="title_of_poster">Title of Poster</string>
+    <string name="year">Year</string>
+    <string name="rating">Rating</string>
+    <string name="description">Description</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="beauty_and_the_beast">Beauty and The Beast</string>
 </resources>

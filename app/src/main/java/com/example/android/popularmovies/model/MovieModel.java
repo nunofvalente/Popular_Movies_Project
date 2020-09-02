@@ -1,8 +1,9 @@
 package com.example.android.popularmovies.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MovieModel {
+public class MovieModel implements Serializable {
 
     private int page;
     private int total_results;
@@ -41,7 +42,7 @@ public class MovieModel {
         this.results = results;
     }
 
-    public static class ResultsBean {
+    public static class ResultsBean implements Serializable {
         /**
          * popularity : 346.971
          * vote_count : 303
