@@ -1,0 +1,1 @@
+For the App to work you need to replace BuildConfig.ApiKey with your own TheMovieDB API key in TheMovieDbConfig class
