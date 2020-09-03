@@ -27,7 +27,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        if(getActionBar()!= null) {
+        if (getActionBar() != null) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -47,7 +47,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void getMovieData() {
-         movie = (MovieModel.ResultsBean) getIntent().getSerializableExtra(MainActivity.TAG);
+        movie = (MovieModel.ResultsBean) getIntent().getSerializableExtra(MainActivity.TAG);
     }
 
     private void setData() {
@@ -59,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
         if (poster_path != null) {
             String url = TheMovieDbConfig.getImage(poster_path);
             Uri uri = Uri.parse(url);
-            Glide.with(this).load(uri).into(imageMoviePoster);
+            Glide.with(this).load(uri).error(R.drawable.default_image_thumbnail).into(imageMoviePoster);
         } else {
             imageMoviePoster.setImageResource(R.drawable.default_image_thumbnail);
         }
@@ -76,16 +76,9 @@ public class DetailActivity extends AppCompatActivity {
         drawable.setColorFilter(Color.parseColor("#53B4DF"), PorterDuff.Mode.SRC_ATOP);
         ratingBarDetails.setRating(Float.parseFloat(rating) * (float) 0.5);
 
-        //Year
-        try {
-            String movieDate = movie.getRelease_date();
-            String [] dateParts = movieDate.split("-");
-            String year = dateParts[0];
-
-            textYear.setText(year);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //Release Date
+        String movieDate = movie.getRelease_date();
+        textYear.setText(movieDate);
 
     }
 }

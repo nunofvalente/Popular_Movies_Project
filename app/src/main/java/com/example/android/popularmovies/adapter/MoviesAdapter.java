@@ -68,7 +68,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyMovieVie
         if (poster_path != null) {
             String url = TheMovieDbConfig.getImage(poster_path);
             Uri uri = Uri.parse(url);
-            Glide.with(context).load(uri).into(holder.imageMoviePoster);
+            Glide.with(context).load(uri).error(R.drawable.default_image_thumbnail).into(holder.imageMoviePoster);
         } else {
             holder.imageMoviePoster.setImageResource(R.drawable.default_image_thumbnail);
         }

@@ -1,9 +1,11 @@
 package com.example.android.popularmovies.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.PersistableBundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,8 +58,18 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
         configureRecyclerView();
     }
 
+    public static int calculateNoOfColumns(Context context) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        float dpWidth = metrics.widthPixels / metrics.density;
+        int scalingFactor = 200;
+        int noOfColumns = (int) (dpWidth / scalingFactor);
+        if(noOfColumns < 2)
+            noOfColumns = 2;
+        return noOfColumns;
+    }
+
     private void configureRecyclerView() {
-        gridLayoutManager = new GridLayoutManager(this, 2);
+        gridLayoutManager = new GridLayoutManager(this, calculateNoOfColumns(this));
         recyclerMovies.setLayoutManager(gridLayoutManager);
         recyclerMovies.setHasFixedSize(true);
 
