@@ -80,7 +80,7 @@ public class DetailActivity extends AppCompatActivity implements RecyclerItemCli
     }
 
     /**
-     * This method sets the UI using the movie information that was retrieved from previous activity
+     * This method sets the UI using the movie information that was retrieved from previous activity.
      */
     private void setData() {
         //Title of the movie
