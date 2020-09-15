@@ -8,4 +8,8 @@
     <string name="description">Description</string>
     <string name="movie_poster">Movie Poster</string>
     <string name="beauty_and_the_beast">Beauty and The Beast</string>
+    <string name="trailer_1">Trailer 1</string>
+    <string name="user_reviews">User Reviews</string>
+    <string name="reviews">Reviews</string>
+    <string name="user_name">User Name</string>
 </resources>

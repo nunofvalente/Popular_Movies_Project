@@ -47,7 +47,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyMovieVie
         @Override
         public void onClick(View view) {
             int adapterPosition = getAdapterPosition();
-            listener.onClick(adapterPosition);
+            listener.onClickItem(adapterPosition);
         }
     }
 
