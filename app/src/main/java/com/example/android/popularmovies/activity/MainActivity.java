@@ -51,6 +51,7 @@ import static com.example.android.popularmovies.api.TheMovieDbConfig.CATEGORY_TO
 @SuppressWarnings("ConstantConditions")
 public class MainActivity extends AppCompatActivity implements RecyclerItemClickListener {
 
+    private static final String KEY_STATE_ORIENTATION = "position";
     public static String TAG;
     public static final String FAV_MOVIES = "fav_movies";
     public static final String MOVIE = "movie_details";
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
         mBinding.recyclerMovieList.setLayoutManager(gridLayoutManager);
         mBinding.recyclerMovieList.setHasFixedSize(true);
         mBinding.recyclerMovieList.setAdapter(adapter);
+
 
         if(!adapter.equals(favoritesAdapter)) {
          mBinding.recyclerMovieList.addOnScrollListener(new RecyclerView.OnScrollListener() {
