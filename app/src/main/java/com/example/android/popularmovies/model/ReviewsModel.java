@@ -2,6 +2,7 @@ package com.example.android.popularmovies.model;
 
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class ReviewsModel {
 
     /**

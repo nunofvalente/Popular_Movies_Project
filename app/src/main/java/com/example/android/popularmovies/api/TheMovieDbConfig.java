@@ -1,4 +1,4 @@
-package com.example.android.popularmovies.config;
+package com.example.android.popularmovies.api;
 
 
 import com.example.android.popularmovies.BuildConfig;
@@ -15,8 +15,8 @@ public class TheMovieDbConfig {
     private static final String LANGUAGE = "en-US";
 
     public static final String YOUTUBE_VIDEO_BASE_URL = "https://www.youtube.com/watch?v=";
-    public static final String REVIEWS_CATEGORY = "reviews";
-    public static final String VIDEOS_CATEGORY = "videos";
+    public static final String CATEGORY_TOP_RATED = "top_rated";
+    public static final String CATEGORY_POPULAR = "popular";
 
     public static String getMovieDbApiKey() {
         return THE_MOVIE_DATABASE_API_KEY;

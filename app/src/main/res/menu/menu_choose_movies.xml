@@ -5,13 +5,19 @@
     <item
         android:id="@+id/menu_popular_movies"
         app:showAsAction="never"
-        android:orderInCategory="1"
+        android:orderInCategory="100"
         android:title="@string/popular_movies"/>
 
     <item
         android:id="@+id/menu_top_rated"
         app:showAsAction="never"
-        android:orderInCategory="2"
+        android:orderInCategory="200"
         android:title="@string/top_rated_movies"/>
+
+    <item
+        android:id="@+id/menu_favorites"
+        app:showAsAction="never"
+        android:orderInCategory="300"
+        android:title="@string/favorite_movies"/>
 
 </menu>

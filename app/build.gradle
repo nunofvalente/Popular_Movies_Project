@@ -68,13 +68,18 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 
     //WorkManager
     def work_version = "2.4.0"
     
     implementation "androidx.work:work-runtime:$work_version"
+
+    //Paging
+    def paging_version = "3.0.0-alpha06"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
 
 

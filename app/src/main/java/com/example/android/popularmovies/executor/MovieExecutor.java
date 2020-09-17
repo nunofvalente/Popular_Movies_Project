@@ -7,7 +7,7 @@ public class MovieExecutor {
 
     private static final Object LOCK = new Object();
     private static MovieExecutor eInstance;
-    private Executor databaseExecutor;
+    private final Executor databaseExecutor;
 
     private MovieExecutor(Executor databaseExecutor) {
         this.databaseExecutor = databaseExecutor;

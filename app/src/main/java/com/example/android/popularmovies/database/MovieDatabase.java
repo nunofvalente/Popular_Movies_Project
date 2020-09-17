@@ -22,8 +22,7 @@ public abstract class MovieDatabase extends RoomDatabase {
 
     /**
      * Singleton that creates the Database Instance or returns if already created.
-     * @param context
-     * @return MovieDatabase
+     *
      */
     public static MovieDatabase getInstance(Context context) {
         if (sInstance == null) {

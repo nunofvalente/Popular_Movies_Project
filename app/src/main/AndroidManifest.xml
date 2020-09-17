@@ -4,6 +4,7 @@
     package="com.example.android.popularmovies">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,9 @@
             android:name=".activity.DetailActivity"
             android:parentActivityName=".activity.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

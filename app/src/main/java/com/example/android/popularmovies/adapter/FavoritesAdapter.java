@@ -15,29 +15,28 @@ import com.bumptech.glide.Glide;
 import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.api.TheMovieDbConfig;
 import com.example.android.popularmovies.listener.RecyclerItemClickListener;
-import com.example.android.popularmovies.model.MovieModel;
+import com.example.android.popularmovies.model.FavoriteMovieModel;
 
 import java.util.List;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyMovieViewHolder> {
+public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyFavoritesViewHolder> {
 
-    final private List<MovieModel.ResultsBean> resultsBeanList;
-    final private Context context;
-    final private RecyclerItemClickListener listener;
+    private final List<FavoriteMovieModel> favoriteMoviesList;
+    private final Context context;
+    private final RecyclerItemClickListener listener;
 
-
-    public MoviesAdapter(List<MovieModel.ResultsBean> resultsBeanList, Context context, RecyclerItemClickListener listener) {
-        this.resultsBeanList = resultsBeanList;
+    public FavoritesAdapter(List<FavoriteMovieModel> favoriteMoviesList, Context context, RecyclerItemClickListener listener) {
+        this.favoriteMoviesList = favoriteMoviesList;
         this.context = context;
         this.listener = listener;
     }
 
-    public class MyMovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+    public class MyFavoritesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
         final ImageView imageMoviePoster;
         final TextView textMovieTitle;
 
-        public MyMovieViewHolder(@NonNull View itemView) {
+        public MyFavoritesViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageMoviePoster = itemView.findViewById(R.id.imageMoviePoster);
@@ -54,18 +53,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyMovieVie
 
     @NonNull
     @Override
-    public MyMovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyFavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View itemList = layoutInflater.inflate(R.layout.movie_list_adapter, parent, false);
 
-        return new MyMovieViewHolder(itemList);
+        return new MyFavoritesViewHolder(itemList);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyMovieViewHolder holder, int position) {
-        MovieModel.ResultsBean resultBean = resultsBeanList.get(position);
-        String poster_path = resultBean.getPoster_path();
+    public void onBindViewHolder(@NonNull MyFavoritesViewHolder holder, int position) {
+        FavoriteMovieModel favorite = favoriteMoviesList.get(position);
+        String poster_path = favorite.getPoster_path();
         if (poster_path != null) {
             String url = TheMovieDbConfig.getImage(poster_path);
             Uri uri = Uri.parse(url);
@@ -74,13 +73,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyMovieVie
             holder.imageMoviePoster.setImageResource(R.drawable.default_image_thumbnail);
         }
 
-        holder.textMovieTitle.setText(resultBean.getTitle());
+        holder.textMovieTitle.setText(favorite.getTitle());
 
     }
 
     @Override
     public int getItemCount() {
-        return resultsBeanList.size();
+        return favoriteMoviesList.size();
     }
 }
-

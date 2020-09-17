@@ -34,7 +34,6 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyTraile
 
     @Override
     public void onBindViewHolder(@NonNull MyTrailerViewHolder holder, int position) {
-        TrailerModel.ResultsBean trailer = mListOfTrailers.get(position);
         int trailerNumber = position + 1;
         holder.mTextTrailer.setText("Trailer " + trailerNumber);
     }
@@ -46,7 +45,7 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyTraile
 
     public class MyTrailerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView mTextTrailer;
+        final TextView mTextTrailer;
 
         public MyTrailerViewHolder(@NonNull View itemView) {
             super(itemView);

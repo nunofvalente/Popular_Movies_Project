@@ -67,7 +67,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margins_medium"
                     android:layout_marginRight="@dimen/margins_medium"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/ratingBarDetails"
+                    app:layout_constraintStart_toStartOf="@+id/ratingBarDetails">
 
 
                     <RatingBar
@@ -112,32 +114,13 @@
                         android:id="@+id/textDetailsMovieYear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginTop="32dp"
                         android:text="@string/year"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/view4" />
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center"
-                        android:background="@drawable/review_text"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="8dp"
-                        android:paddingRight="16dp"
-                        android:paddingBottom="8dp"
-                        android:text="@string/user_reviews"
-                        android:textColor="@color/backgroundColorView"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view4" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -184,6 +167,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
                     android:theme="@style/AppTheme.Blue"/>
+
+                <TextView
+                    android:id="@+id/tv_no_connection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_internet_connection"
+                    android:textSize="16sp"
+                    android:layout_gravity="top|center"/>
 
             </FrameLayout>
 
