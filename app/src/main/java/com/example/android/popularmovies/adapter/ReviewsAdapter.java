@@ -12,7 +12,6 @@ import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.listener.RecyclerItemClickListener;
 import com.example.android.popularmovies.model.ReviewsModel;
 
-
 import java.util.List;
 
 public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.MyReviewViewHolder> {
