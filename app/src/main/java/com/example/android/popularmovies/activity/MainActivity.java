@@ -189,7 +189,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
 
     /**
      * Returns the information from the API to populate the RecyclerView with movies
-     *
      */
     private void getMovies(String category) {
         showProgressBar();
